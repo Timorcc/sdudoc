@@ -32,8 +32,5 @@ public class LoginController {
           return "failed";
       }
     }
-    @PostMapping("/logintest")
-    public String success(){
-        return "success";
-    }
+
 }
