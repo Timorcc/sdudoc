@@ -13,6 +13,7 @@ public class TestUser {
     private Long id ;
     private String username;
     private String password;
+    private String gender;
 
     @Override
     public String toString() {
@@ -20,7 +21,16 @@ public class TestUser {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", gender='" + gender + '\'' +
                 '}';
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public Long getId() {

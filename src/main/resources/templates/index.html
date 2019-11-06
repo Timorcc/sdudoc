@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>sdu书籍管理系统</title>
+
+    <link rel="stylesheet" href="../static/layui/css/layui.css">
+    <script src="../static/layui/layui.js"></script>
     <link rel="stylesheet" href="/layui/css/layui.css">
-
     <script src="/layui/layui.js"></script>
-
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -29,14 +30,14 @@
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
-                <a href="" th:action="@{/login}">
+                <a href="/login">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
                     登录
                 </a>
-<!--                <dl class="layui-nav-child">-->
-<!--                    <dd><a href="">基本资料</a></dd>-->
-<!--                    <dd><a href="">安全设置</a></dd>-->
-<!--                </dl>-->
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
             </li>
             <li class="layui-nav-item"><a href="">退了</a></li>
         </ul>
