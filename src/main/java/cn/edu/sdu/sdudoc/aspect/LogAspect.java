@@ -10,9 +10,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.security.PrivateKey;
-import java.util.Arrays;
 
+import java.util.Arrays;
+//打印日志 aop
 @Aspect
 @Component
 public class LogAspect {
@@ -25,26 +25,28 @@ public class LogAspect {
     @Before("log()")
     public void doBefore(JoinPoint joinPoint) {
         logger.info("---------------doBefore-------------------");
-        ServletRequestAttributes attributes= (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-        String url =request.getRequestURL().toString();
-        String ip =request.getRemoteAddr();
-        String classMethod = joinPoint.getSignature().getDeclaringTypeName()+"."+joinPoint.getSignature().getName();
-        Object[] args=joinPoint.getArgs();
-        RequestLog requestLog = new RequestLog(url,ip,classMethod,args);
-        logger.info("Request : {}",requestLog);
+        String url = request.getRequestURL().toString();
+        String ip = request.getRemoteAddr();
+        String classMethod = joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName();
+        Object[] args = joinPoint.getArgs();
+        RequestLog requestLog = new RequestLog(url, ip, classMethod, args);
+        logger.info("Request : {}", requestLog);
     }
+
     @After("log()")
-    public void doAfter(){
+    public void doAfter() {
         logger.info("---------------doAfter-------------------");
     }
-    @AfterReturning(returning = "result",pointcut = "log()")
-    public void doAfterReturn(Object result){
-        logger.info("Result : {}",result);
+
+    @AfterReturning(returning = "result", pointcut = "log()")
+    public void doAfterReturn(Object result) {
+        logger.info("Result : {}", result);
     }
 
 
-    public class RequestLog{
+    public class RequestLog {
         private String url;
         private String ip;
         private String classMethod;
@@ -102,6 +104,4 @@ public class LogAspect {
                     '}';
         }
     }
-
-
 }
